@@ -6,6 +6,7 @@
 
 #include "rmath.h"
 #include "utils/stopwatch.h"
+#include "utils/bits.h"
 
 using ld = long double;
 
@@ -91,6 +92,13 @@ int main()
     std::cout << "exp(1e2) = " << rosh::exp(1e2) << " (inf)" << std::endl;
     std::cout << std::endl;
 
+    std::cout << "Checking implementation of log" << std::endl;
+    check(linspace(1e-6, 10, size), rosh::log, [](ld t) -> ld { return std::log(t); });
+    std::cout << "log(-1) = " << rosh::log(-1) << " (nan)" << std::endl;
+    std::cout << "log(0) = " << rosh::log(0) << " (-inf)" << std::endl;
+    std::cout << "log(inf) = " << rosh::log(rosh::inf) << " (inf)" << std::endl;
+    std::cout << std::endl;
+
     std::cout << "Checking implementation of sin" << std::endl;
     check(linspace(-10, 10, size), rosh::sin, [](ld t) -> ld { return std::sin(t); });
     std::cout << "sin(0) = " << rosh::sin(0) << " (0.0)" << std::endl;
@@ -107,5 +115,4 @@ int main()
     std::cout << "erf(10) = " << rosh::erf(10) << " (1.0)" << std::endl;
     std::cout << "erf(-10) = " << rosh::erf(-10) << " (-1.0)" << std::endl;
     std::cout << std::endl;
-
 }

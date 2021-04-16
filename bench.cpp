@@ -45,6 +45,9 @@ BENCH(cos_rmath, rosh::cos, -10, 10);
 BENCH(exp_math, std::exp, -10, 10);
 BENCH(exp_rmath, rosh::exp, -10, 10);
 
+BENCH(log_math, std::log, 1e-6, 10);
+BENCH(log_rmath, rosh::log, 1e-6, 10);
+
 BENCH(erf_math, std::erf, -10, 10);
 BENCH(erf_rmath, rosh::erf, -10, 10);
 
